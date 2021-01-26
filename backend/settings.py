@@ -3,7 +3,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '9nneu#^7_aai*(#(6_qiihu-^k-+%a86&vjh=_i9#(c4^8s51n'
 DEBUG = True
-ALLOWED_HOSTS = ['justdjango-chat.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['aikoin.herokuapp.com', '127.0.0.1']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -56,7 +56,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'backend.wsgi.application'
-# ASGI_APPLICATION = "justchat.routing.application"
+# ASGI_APPLICATION = "aikoin.routing.application"
 
 CHANNEL_LAYERS = {
     'default': {
@@ -67,10 +67,24 @@ CHANNEL_LAYERS = {
     },
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'djongo',
+        "CLIENT": {
+           "name": 'aikoin',
+           "host": 'mongodb+srv://eljosh:<L0ve3030>@cluster0.b9kx2.mongodb.net/<aikoin>?retryWrites=true&w=majority',
+           "username": 'eljosh',
+           "password": 'L0ve3030',
+        #    'ENFORCE_SCHEMA': False,
+           "authMechanism": "SCRAM-SHA-1",
+        }, 
     }
 }
 
@@ -113,7 +127,7 @@ ACCOUNT_AUTHENTICATION_METHOD = 'username'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 CSRF_COOKIE_NAME = "csrftoken"
 
-HOST_URL = 'https://justdjango-chat.herokuapp.com'
+HOST_URL = 'https://aikoin.herokuapp.com'
 if DEBUG:
     HOST_URL = 'http://127.0.0.1:8000'
 
